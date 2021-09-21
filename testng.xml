@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="TestAspire" configfailurepolicy="continue">
+	<test name="TestSuites">
+		<classes>
+			<class name="Register.TestRegister" />
+			<class name="Login.TestLogin" />
+		</classes>
+	</test>
+</suite>
