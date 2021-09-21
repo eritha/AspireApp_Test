@@ -113,7 +113,7 @@ public class BaseTest {
             }
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //            driver.manage().window().maximize();
-            driver.manage().window().fullscreen();
+//            driver.manage().window().fullscreen();
             driver.get(url);
         } catch (Exception e) {
             Result.checkFail("Class BaseTest | Method openBrowser | Exception desc : " + e.getMessage());
@@ -129,7 +129,7 @@ public class BaseTest {
                     test.log(LogStatus.PASS, "<p style=\"color: blue; font-size: medium\">" + sTestCases + "</p>"
                             + "<p style=\"color: green; font-size: medium\">This case is PASSED\n"
                             + " >>> [<a href=\"" + Constants.sScreenShot_Path + "\">Click Here</a>] <<< to see full the screenshot" +
-                            "<br><img src=\"" + Constants.sScreenShot_Path + "\" height='900' width='1700' style='border:1px solid green'></p>");
+                            "<br><img src=\"" + Constants.sScreenShot_Path + "\" height='590' width='900' style='border:1px solid green'></p>");
                     Reporter.log("<p style=\"color: green; font-size: medium\">Your Test is Passed\n" +
                             " >>> [<a href=\"" + Constants.sScreenShot_Path + "\">Click Here</a>] <<< to see full the screenshot" +
                             "<br><img src=\"" + Constants.sScreenShot_Path + "\" height='1500' width='2200' style='border:1px solid green'></p>");
@@ -143,7 +143,7 @@ public class BaseTest {
                     test.log(LogStatus.FAIL, "<p style=\"color: blue; font-size: medium\">" + sTestCases + "</p>"
                             + "<p style=\"color: red; font-size: medium\">This case is FAILED\n"
                             + " >>> [<a href=\"" + Constants.sScreenShot_Path + "\">Click Here</a>] <<< to see full the screenshot" +
-                            "<br><img src=\"" + Constants.sScreenShot_Path + "\" height='700' width='1500' style='border:3px solid red'></p></br><p> ---------- </p>" +
+                            "<br><img src=\"" + Constants.sScreenShot_Path + "\" height='590' width='900' style='border:3px solid red'></p></br><p> ---------- </p>" +
                             "<br><p style='color: red; font-size: medium'>Check the video record >>> [<a href=\"" + vFolder.replace("[","").replace("]","") + "\">Click Here</a>] <<< to see more" +
                             "<br><video width=\"320\" height=\"240\" controls>\n" +
                             "      <source src=\""+ vFolder.replace("[","").replace("]","") +"\" type=video/avi>\n" +
@@ -151,7 +151,7 @@ public class BaseTest {
                             "    </video>");
                     Reporter.log("<p style=\"color: red; font-size: medium\">Your Test is Failed\n" +
                             " >>> [<a href=\"" + Constants.sScreenShot_Path + "\">Click Here</a>] <<< to see full the screenshot" +
-                            "<br><img src=\"" + Constants.sScreenShot_Path + "\" height='700' width='1500' style='border:3px solid red'></p>" +
+                            "<br><img src=\"" + Constants.sScreenShot_Path + "\" height='590' width='900' style='border:3px solid red'></p>" +
                             "<br><p style='color: red; font-size: medium'>Check the video record >>> [<a href=\"" + vFolder.replace("[","").replace("]","") + "\">Click Here</a>] <<< to see more" +
                             "<br><video width=\"320\" height=\"240\" controls>\n" +
                             "      <source src=\""+ vFolder.replace("[","").replace("]","") +"\" type=video/avi>\n" +

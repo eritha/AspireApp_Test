@@ -4,7 +4,9 @@
 	<test name="TestSuites">
 		<classes>
 			<class name="Register.TestRegister" />
+			<class name="Register.TestNegativeRegister" />
 			<class name="Login.TestLogin" />
+			<class name="Login.TestNegativeLogin" />
 		</classes>
 	</test>
 </suite>

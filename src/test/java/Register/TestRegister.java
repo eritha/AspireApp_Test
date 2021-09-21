@@ -40,13 +40,10 @@ public class TestRegister extends BaseTest {
     private IncorporatedPage incorporatedPage;
     private DialogAccountExists dialogAccountExists;
 
-    public static String aspireUserName = "";
-    public static String aspirePassword = "";
     String testCaseName;
-    int count = 0;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void setUp(Method method) {
         super.setUp(aspireUrl);
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
@@ -59,10 +56,6 @@ public class TestRegister extends BaseTest {
         incorporatedPage = new IncorporatedPage(driver);
         dialogAccountExists = new DialogAccountExists(driver);
         LogUtils.info("------------------------------Test Register -----------------------------");
-    }
-
-    @BeforeMethod
-    public void setUp(Method method) {
         test = extent.startTest(method.getName()).assignCategory(
                 getClass().getSimpleName());
     }
@@ -141,7 +134,7 @@ public class TestRegister extends BaseTest {
         testCaseName = new Object() {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
-        loginPage.Goto(aspireUrl + "register");
+
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -190,7 +183,6 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
-        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -231,7 +223,6 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
-        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -271,7 +262,6 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
-        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -312,7 +302,6 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
-        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -329,79 +318,12 @@ public class TestRegister extends BaseTest {
         registerPage.PageShouldShowThePhoneNumberErrorMessage("The phone has already been taken.");
     }
 
-    /*
-     * SCENARIO: REG_007 to REG_015 Verity error messages for all register fields
-     * Precondition:
-     * #1: Go to site https://feature-qa-automation.customer-frontend.staging.aspireapp.com/sg/
-     * #2: Click register link
-     * #3: Enter Valid All register fields and check term condition
-     * #4: Input invalid fields into the register form
-     * #5: Verify the error messages displayed correctly for all fields
-     */
-    @Test(dataProvider = "InvalidUsersInfoProvider")
-    public void REG_007_VerifyErrorMessagesDisplayedForNegativeRegisterForm(String testCaseName, String fieldType, String value, String errorMessage) {
-        super.startRecordVideoAfterMethod(className, testCaseName.trim());
-
-        if (count == 0) {
-            loginPage.Goto(aspireUrl + "register");
-            registerPage.VerifyRegisterPageAllElements();
-            registerPage.InputRegisterForm("Phuoc Ha", "Erit", accountEmail, "Singapore (+65)", accountPhone, "Google", "");
-            registerPage.ClickCheckboxTermsAndConditions();
-        }
-
-        switch (fieldType) {
-            case "fullname":
-                registerPage.InputFullName(value);
-                registerPage.Tab();
-                registerPage.PageShouldShowTheFullNameErrorMessage(errorMessage);
-                break;
-            case "email":
-                registerPage.InputEmailAddress(value);
-                registerPage.Tab();
-                registerPage.PageShouldShowTheEmailErrorMessage(errorMessage);
-                break;
-            case "phone":
-                registerPage.InputPhoneNumber("Singapore (+65)", value);
-                if (testCaseName.contains("fulfilled")) {
-                    String emailAddress = "user" + System.currentTimeMillis() + "@yopmail.com";
-                    registerPage.InputFullName("Erit Ha");
-                    registerPage.InputEmailAddress(emailAddress);
-                    registerPage.ClickButtonContinue();
-                } else {
-                    registerPage.Tab();
-                }
-                registerPage.PageShouldShowThePhoneNumberErrorMessage(errorMessage);
-                break;
-        }
-        count++;
-    }
-
-    /**
-     * Invalid data for negative check
-     */
-    @DataProvider(name = "InvalidUsersInfoProvider")
-    public Object[][] getDataFromDataprovider() {
-        return new Object[][]
-                {
-                        {"REG_007 - Verity empty fullname", "fullname", "", "Full Name as per ID is required."},
-                        {"REG_008 - Verity empty email", "email", "", "Email address is required."},
-                        {"REG_009 - Verify empty phone number", "phone", "", "Mobile number is required."},
-                        {"REG_010 - Verify the email contains special character", "email", "#@%^%#$@#$@#.com", "Email address must be a valid email address."},
-                        {"REG_011 - Verify the email missing name", "email", "@gmail.com", "Email address must be a valid email address."},
-                        {"REG_012 - Verify the email missing @ domain", "email", "invalidemail.gmail.com", "Email address must be a valid email address."},
-//                        { "REG_013 - Verify invalid email domain", "email", "invalidemaildomain@111.222.333", "Email address must be a valid email address." },
-                        {"REG_014 - Verify the invalid phone number with length more than 14 characters", "phone", "9785422155569", "Mobile number may not be greater than 14 digits."},
-                        {"REG_015 - Verify the invalid phone number contains string - fulfilled", "phone", "93789ghtrt", "Incorrect phone format for phone., The phone format is invalid."},
-                };
-
-    }
-
-
     @AfterMethod
     public void tearDown() {
         Constants.sClassName = className;
         super.stopRecordVideoAfterMethod();
         super.screenShotAfterMethod(className, testCaseName);
+        super.afterMethod();
     }
 
     @AfterClass
