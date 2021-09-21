@@ -141,7 +141,7 @@ public class TestRegister extends BaseTest {
         testCaseName = new Object() {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
-
+        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -190,6 +190,7 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
+        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -230,6 +231,7 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
+        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -269,6 +271,7 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
+        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -309,6 +312,7 @@ public class TestRegister extends BaseTest {
         }.getClass().getEnclosingMethod().getName();
         super.startRecordVideoAfterMethod(className, testCaseName);
 
+        loginPage.Goto(aspireUrl + "register");
         loginPage.VerifyLoginPageAllElements();
         loginPage.ClickLinkRegister();
         Thread.sleep(1000); // Issue lazy load at register page
@@ -384,7 +388,7 @@ public class TestRegister extends BaseTest {
                         {"REG_009 - Verify empty phone number", "phone", "", "Mobile number is required."},
                         {"REG_010 - Verify the email contains special character", "email", "#@%^%#$@#$@#.com", "Email address must be a valid email address."},
                         {"REG_011 - Verify the email missing name", "email", "@gmail.com", "Email address must be a valid email address."},
-                        {"REG_012 - Verify the email mising @ domain", "email", "invalidemail.gmail.com", "Email address must be a valid email address."},
+                        {"REG_012 - Verify the email missing @ domain", "email", "invalidemail.gmail.com", "Email address must be a valid email address."},
 //                        { "REG_013 - Verify invalid email domain", "email", "invalidemaildomain@111.222.333", "Email address must be a valid email address." },
                         {"REG_014 - Verify the invalid phone number with length more than 14 characters", "phone", "9785422155569", "Mobile number may not be greater than 14 digits."},
                         {"REG_015 - Verify the invalid phone number contains string - fulfilled", "phone", "93789ghtrt", "Incorrect phone format for phone., The phone format is invalid."},
@@ -398,8 +402,6 @@ public class TestRegister extends BaseTest {
         Constants.sClassName = className;
         super.stopRecordVideoAfterMethod();
         super.screenShotAfterMethod(className, testCaseName);
-//        if(Result.bResult)
-//            test.pass("Passed");
     }
 
     @AfterClass

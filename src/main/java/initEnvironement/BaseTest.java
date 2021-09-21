@@ -113,7 +113,7 @@ public class BaseTest {
             }
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //            driver.manage().window().maximize();
-//            driver.manage().window().fullscreen();
+            driver.manage().window().fullscreen();
             driver.get(url);
         } catch (Exception e) {
             Result.checkFail("Class BaseTest | Method openBrowser | Exception desc : " + e.getMessage());
